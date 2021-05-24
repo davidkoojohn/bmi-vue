@@ -8,6 +8,7 @@ specifiers:
   '@vue/cli-plugin-vuex': ~4.5.0
   '@vue/cli-service': ~4.5.0
   '@vue/compiler-sfc': ^3.0.0
+  axios: ^0.21.1
   babel-plugin-import: ^1.13.3
   core-js: ^3.6.5
   element-plus: ^1.0.2-beta.44
@@ -23,6 +24,7 @@ specifiers:
   vuex: ^4.0.0-0
 
 dependencies:
+  axios: 0.21.1
   core-js: registry.nlark.com/core-js/3.12.1
   element-plus: registry.nlark.com/element-plus/1.0.2-beta.44_vue@3.0.11
   register-service-worker: registry.nlark.com/register-service-worker/1.7.2
@@ -1189,6 +1191,12 @@ packages:
   /aws4/1.11.0:
     resolution: {integrity: sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=, tarball: aws4/download/aws4-1.11.0.tgz}
     dev: true
+
+  /axios/0.21.1:
+    resolution: {integrity: sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg=, tarball: axios/download/axios-0.21.1.tgz?cache=0&sync_timestamp=1609319355933&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.21.1.tgz}
+    dependencies:
+      follow-redirects: registry.nlark.com/follow-redirects/1.14.1
+    dev: false
 
   /babel-code-frame/6.26.0:
     resolution: {integrity: sha1-Y/1D99weO7fONZR9uP42mj9Yx0s=, tarball: babel-code-frame/download/babel-code-frame-6.26.0.tgz}
@@ -8638,7 +8646,6 @@ packages:
     name: follow-redirects
     version: 1.14.1
     engines: {node: '>=4.0'}
-    dev: true
 
   registry.nlark.com/fork-ts-checker-webpack-plugin/3.1.1:
     resolution: {integrity: sha1-oWQsDT5l9QwswXQunAqA9EH4axk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/fork-ts-checker-webpack-plugin/download/fork-ts-checker-webpack-plugin-3.1.1.tgz}
