@@ -4,4 +4,13 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+import {ElButton} from 'element-plus'
+
+let app = createApp(App)
+
+app.use(store)
+app.use(router)
+
+app.use(ElButton)
+
+app.mount('#app')
