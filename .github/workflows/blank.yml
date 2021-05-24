@@ -22,7 +22,7 @@ jobs:
       - name: Install
         run: npm install
       - name: Install
-        run: npm run docs:build
+        run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
