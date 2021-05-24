@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.b17032e1e42e1f02d325a9ec9d765be2.js"
+  "/bmi-vue/precache-manifest.7778db862e47a6405bce5a334ffce929.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "bmi-vue"});
