@@ -5,32 +5,20 @@
         <el-row>
           <el-col :span="12" :xs="24">
             <div class="left">
-              <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="特殊资源" prop="resource">
-                  <el-radio-group v-model="ruleForm.resource">
-                    <el-radio label="线上品牌商赞助"></el-radio>
-                    <el-radio label="线下场地免费"></el-radio>
-                  </el-radio-group>
+              <h2>免费计算你的身体质量指数 (BMI)</h2>
+              <el-form :model="bmiForm" :rules="bmiFormRules" ref="bmiForm" class="bmi-form">
+                <el-form-item label="身高" prop="height">
+                  <el-input v-model="bmiForm.name"></el-input>
+                  <span class="unit">单位: 厘米 cm</span>
                 </el-form-item>
-                <el-form-item label="活动名称" prop="name">
-                  <el-input v-model="ruleForm.name"></el-input>
-                </el-form-item>
-                <el-form-item label="活动名称" prop="name">
-                  <el-input v-model="ruleForm.name"></el-input>
-                </el-form-item>
-                <el-form-item label="活动区域" prop="region">
-                  <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-                    <el-option label="区域一" value="shanghai"></el-option>
-                    <el-option label="区域二" value="beijing"></el-option>
-                  </el-select>
-                </el-form-item>
-                <el-form-item label="活动性质" prop="type">
-                  <el-checkbox-group v-model="ruleForm.type">
-                    <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-                  </el-checkbox-group>
+                <el-form-item label="体重" prop="weight">
+                  <el-input v-model="bmiForm.name"></el-input>
+                  <span class="unit">单位: 千克 kg</span>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                  <el-button class="submit-bmi" type="primary" @click="submitForm('bmiForm')">
+                    计算BMI
+                  </el-button>
                 </el-form-item>
               </el-form>
             </div>
@@ -63,42 +51,20 @@ interface Data {
   components: {},
   data() {
     return {
-      count: 1,
-      news: {
-        title: '123',
+      bmiForm: {
+        height: '',
+        weight: ''
       },
-      ruleForm: {
-        name: '',
-        region: '',
-        type: [],
-        resource: ''
-      },
-      rules: {
-        name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+      bmiFormRules: {
+        height: [
+          { required: true, message: '请输入身高', trigger: 'blur' },
+          { type: 'number', message: '请输入合法的数值', trigger: 'blur' }
         ],
-        region: [
-          { required: true, message: '请选择活动区域', trigger: 'change' }
-        ],
-        type: [
-          { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-        ],
-        resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' }
+        weight: [
+          { required: true, message: '请输入体重', trigger: 'blur' },
+          { type: 'number', message: '请输入合法的数值', trigger: 'blur' }
         ],
       }
-    }
-  },
-  computed: {
-    reverseMsg(): string {
-      return String(this.count * 10)
-    }
-  },
-  props: {
-    title: {
-      type: String,
-      default: 'hello world'
     }
   },
   methods: {
@@ -130,4 +96,20 @@ export default class Home extends Vue {
 .container
   max-width 1200px
   width 100%
+
+  .left
+    width 100%
+    max-width 400px
+    margin 0 auto
+
+  .el-form-item__content
+    display flex
+
+    .unit
+      white-space nowrap
+      margin-left 20px
+
+    .submit-bmi
+      margin-left 50px
+
 </style>
