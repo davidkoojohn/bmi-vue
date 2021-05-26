@@ -8,11 +8,11 @@
               <h2>免费计算你的身体质量指数 (BMI)</h2>
               <el-form :model="bmiForm" :rules="bmiFormRules" ref="bmiForm" class="bmi-form">
                 <el-form-item label="身高" prop="height">
-                  <el-input v-model="bmiForm.name"></el-input>
+                  <el-input v-model.number="bmiForm.height"></el-input>
                   <span class="unit">单位: 厘米 cm</span>
                 </el-form-item>
                 <el-form-item label="体重" prop="weight">
-                  <el-input v-model="bmiForm.name"></el-input>
+                  <el-input v-model.number="bmiForm.weight"></el-input>
                   <span class="unit">单位: 千克 kg</span>
                 </el-form-item>
                 <el-form-item>
@@ -25,10 +25,38 @@
           </el-col>
           <el-col :span="12" :xs="24">
             <div class="right">
-              bmi
+              <h3>BMI 中国标准</h3>
             </div>
           </el-col>
         </el-row>
+
+        <el-table :data="tableData" style="width: 100%" empty-text="当前没有任何 BMI 记录。请输入你的身高和体重，记算你的 BMI 指数。">
+          <el-table-column label="#" type="index" align="center" />
+          <el-table-column label="日期" width="120" align="center">
+            <template #default="scope">
+              {{formatDate(scope.row.createdAt)}}
+            </template>
+          </el-table-column>
+          <el-table-column label="身高" align="center">
+            <template #default="scope">
+              {{ scope.row.height }} cm
+            </template>
+          </el-table-column>
+          <el-table-column label="体重" align="center">
+            <template #default="scope">
+              {{ scope.row.weight }} kg
+            </template>
+          </el-table-column>
+          <el-table-column label="BMI" prop="bmi" align="center" />
+          <el-table-column label="操作" width="100px" align="center">
+            <template #default="scope">
+              <el-button
+                  size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
     </template>
   </app-layout>
@@ -36,6 +64,7 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import moment from 'moment'
 
 type TestType = {
   title: string,
@@ -51,6 +80,7 @@ interface Data {
   components: {},
   data() {
     return {
+      tableData: [],
       bmiForm: {
         height: '',
         weight: ''
@@ -67,30 +97,47 @@ interface Data {
       }
     }
   },
+  created() {
+    this.fetchBmiList()
+  },
   methods: {
-    submitForm(formName: any) {
+    formatDate(datetime: string) {
+      return moment(datetime).format('YYYY-MM-DD')
+    },
+    fetchBmiList() {
+      const self = this
+      this.$http({
+        url: 'bmi'
+      }).then((res: any) => {
+        self.tableData = res.data.data
+        console.log(self.tableData)
+      }).catch((e: any) => {
+        console.log(e)
+      })
+    },
+    submitForm(formName: string) {
       this.$refs[formName].validate((valid: any) => {
         if (valid) {
-          alert('submit!');
+          this.$http({
+            method: 'POST',
+            url: '/bmi',
+            data: this.bmiForm
+          }).then((res: object) => {
+            console.log(res)
+            this.fetchBmiList()
+          })
         } else {
           console.log('error submit!!');
           return false;
         }
       });
     },
+    handleDelete(row: object) {
+      console.log(row);
+    }
   }
 })
-export default class Home extends Vue {
-  created() {
-    /*this.$http({
-      url: 'bmi'
-    }).then((res: any) => {
-      console.log(res)
-    }).catch((e: any) => {
-      console.log(e)
-    })*/
-  }
-}
+export default class Home extends Vue {}
 </script>
 <style lang="stylus">
 .container

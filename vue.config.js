@@ -5,9 +5,8 @@ module.exports = {
   devServer: {
     proxy: {
       '/': {
-        target: process.env.NODE_ENV === '!production'
-          ? 'https://veihwwnelcwq.leanapp.cn/'
-          : 'http://localhost:3000/'
+        target: 'https://veihwwnelcwq.leanapp.cn',
+        // target: 'http://localhost:3000/',
       }
     }
   }

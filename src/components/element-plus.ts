@@ -25,6 +25,10 @@ import {
   ElMessage,
   ElMessageBox,
   ElNotification,
+  ElTable,
+  ElTableColumn,
+  ElPopover,
+  ElIcon
 } from 'element-plus';
 
 const components = [
@@ -47,7 +51,11 @@ const components = [
   ElRadioGroup,
   ElHeader,
   ElMain,
-  ElFooter
+  ElFooter,
+  ElTable,
+  ElTableColumn,
+  ElPopover,
+  ElIcon
 ]
 
 const plugins = [

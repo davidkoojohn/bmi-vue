@@ -13,6 +13,7 @@ specifiers:
   core-js: ^3.6.5
   element-plus: ^1.0.2-beta.44
   lint-staged: ^9.5.0
+  moment: ^2.29.1
   normalize.css: ^8.0.1
   register-service-worker: ^1.7.1
   stylus: ^0.54.7
@@ -28,6 +29,7 @@ dependencies:
   axios: 0.21.1
   core-js: registry.nlark.com/core-js/3.12.1
   element-plus: registry.nlark.com/element-plus/1.0.2-beta.44_vue@3.0.11
+  moment: 2.29.1
   normalize.css: 8.0.1
   register-service-worker: registry.nlark.com/register-service-worker/1.7.2
   tslib: 2.2.0
@@ -4440,6 +4442,10 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: true
+
+  /moment/2.29.1:
+    resolution: {integrity: sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=, tarball: moment/download/moment-2.29.1.tgz}
+    dev: false
 
   /move-concurrently/1.0.1:
     resolution: {integrity: sha1-viwAX9oy4LKa8fBdfEszIUxwH5I=, tarball: move-concurrently/download/move-concurrently-1.0.1.tgz}
