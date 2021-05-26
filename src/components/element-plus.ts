@@ -1,5 +1,9 @@
 
 import {
+  ElContainer,
+  ElHeader,
+  ElMain,
+  ElFooter,
   ElButton,
   ElInfiniteScroll,
   ElLoading,
@@ -9,7 +13,11 @@ import {
 } from 'element-plus';
 
 const components = [
-  ElButton
+  ElContainer,
+  ElButton,
+  ElHeader,
+  ElMain,
+  ElFooter
 ]
 
 const plugins = [
