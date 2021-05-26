@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a6f3a05fdd21227d6713",
+    "revision": "301d88c013935d365eed",
     "url": "/bmi-vue/css/app.45f14bd4.css"
   },
   {
-    "revision": "a7f0629e027322cbfabc",
+    "revision": "2486eb18e3c7b024eeff",
     "url": "/bmi-vue/css/chunk-vendors.d60479b1.css"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bmi-vue/img/logo.82b9c7a5.png"
   },
   {
-    "revision": "5e3a5c75d6cb7623a8044daf564920fb",
+    "revision": "8ecc13fb24fffe33259f1db29dfb5c2c",
     "url": "/bmi-vue/index.html"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bmi-vue/js/about.b85a058f.js"
   },
   {
-    "revision": "a6f3a05fdd21227d6713",
-    "url": "/bmi-vue/js/app.c3891a8a.js"
+    "revision": "301d88c013935d365eed",
+    "url": "/bmi-vue/js/app.d62e78a1.js"
   },
   {
-    "revision": "a7f0629e027322cbfabc",
-    "url": "/bmi-vue/js/chunk-vendors.de49728f.js"
+    "revision": "2486eb18e3c7b024eeff",
+    "url": "/bmi-vue/js/chunk-vendors.087c1420.js"
   },
   {
     "revision": "29c34f142428636c727a67acca3dcb48",
