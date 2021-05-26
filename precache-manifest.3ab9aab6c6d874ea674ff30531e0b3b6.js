@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c668dfe7f68107673789",
-    "url": "/bmi-vue/css/app.d18b2c74.css"
+    "revision": "36b7508ffa9cb1f20823",
+    "url": "/bmi-vue/css/app.6c41d821.css"
   },
   {
-    "revision": "40a650801e797d0cf0f4",
-    "url": "/bmi-vue/css/chunk-vendors.31eaace3.css"
+    "revision": "c1f6307931eddc08e790",
+    "url": "/bmi-vue/css/chunk-vendors.ee3e4861.css"
   },
   {
-    "revision": "e7a3accd8fc48b189a3e9ada24b3d600",
+    "revision": "bcab62cfe7fa7847379746aa336ca964",
     "url": "/bmi-vue/index.html"
   },
   {
@@ -16,12 +16,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bmi-vue/js/about.b85a058f.js"
   },
   {
-    "revision": "c668dfe7f68107673789",
-    "url": "/bmi-vue/js/app.33eed64b.js"
+    "revision": "36b7508ffa9cb1f20823",
+    "url": "/bmi-vue/js/app.32ad6efa.js"
   },
   {
-    "revision": "40a650801e797d0cf0f4",
-    "url": "/bmi-vue/js/chunk-vendors.c374d506.js"
+    "revision": "c1f6307931eddc08e790",
+    "url": "/bmi-vue/js/chunk-vendors.1455e670.js"
   },
   {
     "revision": "29c34f142428636c727a67acca3dcb48",
