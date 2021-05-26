@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-// export const baseURL = 'https://veihwwnelcwq.leanapp.cn/';
-// export const baseURL = 'http://localhost:3000/';
+export const baseURL = process.env.NODE_ENV === 'production'
+  ? 'https://veihwwnelcwq.leanapp.cn/'
+  : 'http://localhost:3000/'
 
 // create an axios instance
 const http = axios.create({
-  // baseURL,
+  baseURL,
   timeout: 15000,
 });
 
