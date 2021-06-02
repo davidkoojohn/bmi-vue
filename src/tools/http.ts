@@ -8,6 +8,7 @@ export const baseURL = process.env.NODE_ENV === 'production'
 
 axios.defaults.withCredentials = true
 
+console.log(axios.defaults.withCredentials)
 const http = axios.create({
   baseURL,
   timeout: 15000,
