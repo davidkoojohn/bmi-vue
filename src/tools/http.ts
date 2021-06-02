@@ -5,6 +5,9 @@ export const baseURL = process.env.NODE_ENV === 'production'
   : 'http://localhost:3000/'
 
 // create an axios instance
+
+axios.defaults.withCredentials = true
+
 const http = axios.create({
   baseURL,
   timeout: 15000,
