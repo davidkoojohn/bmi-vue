@@ -110,7 +110,6 @@ interface Data {
         url: 'bmi'
       }).then((res: any) => {
         self.tableData = res.data.data
-        console.log(self.tableData)
       }).catch((e: any) => {
         console.log(e)
       })
@@ -132,8 +131,14 @@ interface Data {
         }
       });
     },
-    handleDelete(row: object) {
-      console.log(row);
+    handleDelete(row: any) {
+      this.$http({
+        method: 'DELETE',
+        url: '/bmi',
+        data: {id: row.objectId}
+      }).then((res: any) => {
+        console.log(res.data);
+      })
     }
   }
 })
