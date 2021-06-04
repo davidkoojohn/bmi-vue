@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a2a3c1131b39204c0c4c",
-    "url": "/bmi-vue/css/app.d910dfc0.css"
+    "revision": "3ff9bd2d0fdf0da2882b",
+    "url": "/bmi-vue/css/app.4d22e538.css"
   },
   {
     "revision": "bcd7cbd44645e592424b",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bmi-vue/fonts/element-icons.d9491be2.woff"
   },
   {
-    "revision": "10958188a87aafcb55cc8bf14e5b4f78",
+    "revision": "5b46659449af2ec4f7dce10774716e38",
     "url": "/bmi-vue/index.html"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bmi-vue/js/about.b85a058f.js"
   },
   {
-    "revision": "a2a3c1131b39204c0c4c",
-    "url": "/bmi-vue/js/app.d8282bb9.js"
+    "revision": "3ff9bd2d0fdf0da2882b",
+    "url": "/bmi-vue/js/app.88bf209c.js"
   },
   {
     "revision": "bcd7cbd44645e592424b",
