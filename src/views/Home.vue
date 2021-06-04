@@ -31,11 +31,17 @@
                     <span>BMI 中国标准</span>
                   </div>
                 </template>
-                <div v-for="(item, index) in standard" :key="index" class="text item">
-                  <div :style="{backgroundColor: item.bg}">
-                    <span>{{item.key}}</span>
-                    <span>{{item.value}}</span>
-                  </div>
+                <div
+                    v-for="(item, index) in standard"
+                    :key="index"
+                    class="text item"
+                    :style="{backgroundColor: item.bg}"
+                >
+                  <span :style="{ opacity: status === item.key ? 1 : 0}" class="arrow">
+                    <i class="el-icon-d-arrow-right"></i>
+                  </span>
+                  <span class="key">{{item.key}}</span>
+                  <span class="val">{{item.value}}</span>
                 </div>
               </el-card>
             </div>
@@ -107,6 +113,7 @@ interface Data {
           { type: 'number', message: '请输入合法的数值', trigger: 'blur' }
         ],
       },
+      status: '',
       standard: [
         {key: '分类', value: 'BMI 范围', bg: '#8dd8f8'},
         {key: '偏瘦', value: '<= 18.4', bg: '#ccc'},
@@ -140,8 +147,9 @@ interface Data {
             method: 'POST',
             url: '/bmi',
             data: this.bmiForm
-          }).then((res: object) => {
-            console.log(res)
+          }).then((res: any) => {
+            const { status } = res.data.data
+            this.status = status
             this.fetchBmiList()
           })
         } else {
@@ -157,6 +165,7 @@ interface Data {
         data: {id: row.objectId}
       }).then((res: any) => {
         console.log(res.data);
+        this.fetchBmiList()
       })
     }
   }
@@ -185,5 +194,21 @@ export default class Home extends Vue {}
 
   .right
     width 100%
-    max-width 500px
+    max-width 400px
+    margin 0 auto
+
+    .box-card
+      .item
+        height 34px
+        line-height 34px
+        display flex
+        align-items center
+        text-align center
+
+        .arrow
+          width 15%
+        .key
+          width 35%
+        .val
+          width 50%
 </style>
