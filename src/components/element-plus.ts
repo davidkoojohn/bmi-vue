@@ -28,7 +28,8 @@ import {
   ElTable,
   ElTableColumn,
   ElPopover,
-  ElIcon
+  ElIcon,
+  ElCard
 } from 'element-plus';
 
 const components = [
@@ -55,7 +56,8 @@ const components = [
   ElTable,
   ElTableColumn,
   ElPopover,
-  ElIcon
+  ElIcon,
+  ElCard
 ]
 
 const plugins = [

@@ -25,7 +25,19 @@
           </el-col>
           <el-col :span="12" :xs="24">
             <div class="right">
-              <h3>BMI 中国标准</h3>
+              <el-card class="box-card">
+                <template #header>
+                  <div class="card-header">
+                    <span>BMI 中国标准</span>
+                  </div>
+                </template>
+                <div v-for="(item, index) in standard" :key="index" class="text item">
+                  <div :style="{backgroundColor: item.bg}">
+                    <span>{{item.key}}</span>
+                    <span>{{item.value}}</span>
+                  </div>
+                </div>
+              </el-card>
             </div>
           </el-col>
         </el-row>
@@ -94,7 +106,14 @@ interface Data {
           { required: true, message: '请输入体重', trigger: 'blur' },
           { type: 'number', message: '请输入合法的数值', trigger: 'blur' }
         ],
-      }
+      },
+      standard: [
+        {key: '分类', value: 'BMI 范围', bg: '#8dd8f8'},
+        {key: '偏瘦', value: '<= 18.4', bg: '#ccc'},
+        {key: '正常', value: '18.5 ~ 23.9', bg: '#6c0'},
+        {key: '过重', value: '24.0 ~ 27.9', bg: '#ff0'},
+        {key: '肥胖', value: '>= 28.0', bg: '#f90'},
+      ]
     }
   },
   created() {
@@ -164,4 +183,7 @@ export default class Home extends Vue {}
     .submit-bmi
       margin-left 50px
 
+  .right
+    width 100%
+    max-width 500px
 </style>
