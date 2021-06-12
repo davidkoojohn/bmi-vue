@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { defineComponent } from 'vue'
 import moment from 'moment'
 
 type TestType = {
@@ -94,7 +94,7 @@ interface Data {
   news: TestType
 }
 
-@Options({
+export default defineComponent({
   components: {},
   data() {
     return {
@@ -170,45 +170,4 @@ interface Data {
     }
   }
 })
-export default class Home extends Vue {}
 </script>
-<style lang="stylus">
-.container
-  max-width 1200px
-  width 100%
-
-  .left
-    width 100%
-    max-width 400px
-    margin 0 auto
-
-  .el-form-item__content
-    display flex
-
-    .unit
-      white-space nowrap
-      margin-left 20px
-
-    .submit-bmi
-      margin-left 50px
-
-  .right
-    width 100%
-    max-width 400px
-    margin 0 auto
-
-    .box-card
-      .item
-        height 34px
-        line-height 34px
-        display flex
-        align-items center
-        text-align center
-
-        .arrow
-          width 15%
-        .key
-          width 35%
-        .val
-          width 50%
-</style>
