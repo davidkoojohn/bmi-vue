@@ -83,6 +83,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import moment from 'moment'
+import http from '../tools/http'
 
 type TestType = {
   title: string,
@@ -132,7 +133,7 @@ export default defineComponent({
     },
     fetchBmiList() {
       const self = this
-      this.$http({
+      http({
         url: 'bmi'
       }).then((res: any) => {
         self.tableData = res.data.data
@@ -143,7 +144,7 @@ export default defineComponent({
     submitForm(formName: string) {
       this.$refs[formName].validate((valid: any) => {
         if (valid) {
-          this.$http({
+          http({
             method: 'POST',
             url: '/bmi',
             data: this.bmiForm
@@ -159,7 +160,7 @@ export default defineComponent({
       });
     },
     handleDelete(row: any) {
-      this.$http({
+      http({
         method: 'DELETE',
         url: '/bmi',
         data: {id: row.objectId}
