@@ -21,5 +21,8 @@ export default defineConfig({
         }
       ]
     })
-  ]
+  ],
+  build: {
+    assetsDir: 'bmi-vue'
+  }
 })
