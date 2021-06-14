@@ -1,9 +1,9 @@
 <template>
-  <el-container>
-    <el-header>Header</el-header>
-    <el-main>
+  <div class="container">
+    <header>Header</header>
+    <main>
       <slot name="content"></slot>
-    </el-main>
-    <el-footer>Footer</el-footer>
-  </el-container>
+    </main>
+    <footer>Footer</footer>
+  </div>
 </template>
