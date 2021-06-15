@@ -1,0 +1,1 @@
+import{o as s,h as n,F as o,j as a}from"./vendor.d3bf36b8.js";const r={},d=a("h1",null,"Landing",-1),l=a("div",{class:"box"},[a("div",{class:"sub-box"})],-1);r.render=function(a,r){return s(),n(o,null,[d,l],64)};export default r;
