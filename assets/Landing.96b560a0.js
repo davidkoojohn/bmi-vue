@@ -1,1 +1,0 @@
-import{j as s,k as t,o as n,h as a,l,t as o,F as e}from"./vendor.7ace82d5.js";const i=s({setup:()=>({list:t([])})}),u=l("h1",null,"Landing",-1),r=l("div",{class:"box"},[l("div",{class:"sub-box"})],-1);i.render=function(s,t,i,d,c,h){return n(),a(e,null,[u,r,l("button",{onClick:t[1]||(t[1]=t=>s.list.push(Date.now()))},"push item #"+o(s.list.length+1),1)],64)};export default i;
