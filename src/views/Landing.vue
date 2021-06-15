@@ -3,7 +3,21 @@
   <div class="box">
     <div class="sub-box"></div>
   </div>
+  <button @click="list.push(Date.now())">push item #{{list.length + 1}}</button>
 </template>
+
+<script>
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup: () => {
+    const list = ref([])
+    return {
+      list
+    }
+  }
+})
+</script>
 
 <style>
 $bg-color: #f00;
