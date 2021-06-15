@@ -1,1 +1,0 @@
-.box{height:100px;width:100px;background:red}.box .sub-box{height:30px;width:30px;background:#3a8ee6}.box .sub-box::before{content:'before'}
