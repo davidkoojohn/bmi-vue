@@ -5,13 +5,13 @@
         <el-col :span="12" :xs="24">
           <div class="left">
             <h2>免费计算你的身体质量指数 (BMI)</h2>
-            <el-form :model="bmiForm" :rules="bmiFormRules" ref="bmiForm" class="bmi-form">
+            <el-form :model="bmiFormData" :rules="bmiFormRules" ref="bmiForm" class="bmi-form">
               <el-form-item label="身高" prop="height">
-                <el-input v-model.number="bmiForm.height"></el-input>
+                <el-input v-model.number="bmiFormData.height"></el-input>
                 <span class="unit">单位: 厘米 cm</span>
               </el-form-item>
               <el-form-item label="体重" prop="weight">
-                <el-input v-model.number="bmiForm.weight"></el-input>
+                <el-input v-model.number="bmiFormData.weight"></el-input>
                 <span class="unit">单位: 千克 kg</span>
               </el-form-item>
               <el-form-item>
@@ -51,13 +51,14 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive, unref } from 'vue'
+import { ElMessage } from 'element-plus'
 
 export default defineComponent({
-  setup: () => {
+  setup: (props, context) => {
     const list = ref([])
-
-    const bmiForm = reactive({
+    const bmiForm = ref(null)
+    const bmiFormData = reactive({
       height: '',
       weight: ''
     })
@@ -82,12 +83,20 @@ export default defineComponent({
       {key: '肥胖', value: '>= 28.0', bg: '#f90'},
     ]
 
-    const submitForm = () => {
-      console.log('submitForm')
+    const submitForm = async () => {
+      const form = unref(bmiForm);
+      if (!form) return
+      try {
+        await form.validate()
+        console.log('success', bmiFormData)
+      } catch (error) {
+        ElMessage.error('请正确填写表单！')
+      }
     }
 
     return {
       bmiForm,
+      bmiFormData,
       bmiFormRules,
       status,
       standard,

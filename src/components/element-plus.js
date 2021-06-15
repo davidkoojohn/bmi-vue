@@ -12,7 +12,6 @@ import {
   ElButton,
   ElInfiniteScroll,
   ElLoading,
-  ElMessage,
   ElMessageBox,
   ElNotification,
 } from 'element-plus'
@@ -35,7 +34,6 @@ const components = [
 const plugins = [
   ElInfiniteScroll,
   ElLoading,
-  ElMessage,
   ElMessageBox,
   ElNotification,
 ]
