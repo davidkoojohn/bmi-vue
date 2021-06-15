@@ -1,4 +1,8 @@
 import {
+  ElContainer,
+  ElHeader,
+  ElMain,
+  ElFooter,
   ElButton,
   ElInfiniteScroll,
   ElLoading,
@@ -9,6 +13,10 @@ import {
 
 
 const components = [
+  ElContainer,
+  ElHeader,
+  ElMain,
+  ElFooter,
   ElButton,
 ]
 

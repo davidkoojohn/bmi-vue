@@ -1,9 +1,13 @@
 <template>
-  <h1>Landing</h1>
-  <div class="box">
-    <div class="sub-box"></div>
-  </div>
-  <button @click="list.push(Date.now())">push item #{{list.length + 1}}</button>
+  <app-layout>
+    <template v-slot:content>
+      <h1>Landing</h1>
+      <div class="box">
+        <div class="sub-box"></div>
+      </div>
+      <button @click="list.push(Date.now())">push item #{{list.length + 1}}</button>
+    </template>
+  </app-layout>
 </template>
 
 <script>
