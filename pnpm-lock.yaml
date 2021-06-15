@@ -7,10 +7,12 @@ specifiers:
   vite: ^2.3.7
   vite-plugin-style-import: ^0.10.1
   vue: ^3.1.1
+  vue-router: '4'
 
 dependencies:
   element-plus: registry.nlark.com/element-plus/1.0.2-beta.48_vue@3.1.1
   vue: registry.nlark.com/vue/3.1.1
+  vue-router: registry.nlark.com/vue-router/4.0.8_vue@3.1.1
 
 devDependencies:
   '@vitejs/plugin-vue': registry.nlark.com/@vitejs/plugin-vue/1.2.3_@vue+compiler-sfc@3.1.1
@@ -61,6 +63,11 @@ packages:
   /debug/4.3.2:
     resolution: {integrity: sha1-8KScGKyHeeMdSgxgKd+3aHPHQos=, tarball: debug/download/debug-4.3.2.tgz}
     engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.1.2
     dev: true
@@ -384,6 +391,12 @@ packages:
       '@vue/shared': registry.nlark.com/@vue/shared/3.1.1
     dev: true
 
+  registry.nlark.com/@vue/devtools-api/6.0.0-beta.14:
+    resolution: {integrity: sha1-btLW+NZqklbJrQS//wgwm6h7lyM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.14.tgz}
+    name: '@vue/devtools-api'
+    version: 6.0.0-beta.14
+    dev: false
+
   registry.nlark.com/@vue/reactivity/3.1.1:
     resolution: {integrity: sha1-nAL9FGpsOwPn1li3z3b0tpsPmMg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@vue/reactivity/download/@vue/reactivity-3.1.1.tgz}
     name: '@vue/reactivity'
@@ -677,6 +690,7 @@ packages:
       vite: registry.nlark.com/vite/2.3.7
     transitivePeerDependencies:
       - rollup
+      - supports-color
     dev: true
 
   registry.nlark.com/vite/2.3.7:
@@ -693,6 +707,18 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  registry.nlark.com/vue-router/4.0.8_vue@3.1.1:
+    resolution: {integrity: sha1-VdQpCjEiRE7byRo80kkrsdDO9JQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/vue-router/download/vue-router-4.0.8.tgz}
+    id: registry.nlark.com/vue-router/4.0.8
+    name: vue-router
+    version: 4.0.8
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vue/devtools-api': registry.nlark.com/@vue/devtools-api/6.0.0-beta.14
+      vue: registry.nlark.com/vue/3.1.1
+    dev: false
 
   registry.nlark.com/vue/3.1.1:
     resolution: {integrity: sha1-mtZVdYoPpsDe5bPSQx05Eqmzgao=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/vue/download/vue-3.1.1.tgz}
