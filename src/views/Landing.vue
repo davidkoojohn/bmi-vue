@@ -24,6 +24,7 @@
         </el-col>
         <el-col :span="12" :xs="24">
           <div class="right">
+            <Status />
             <el-card class="box-card">
               <template #header>
                 <div class="card-header">
@@ -53,8 +54,12 @@
 <script>
 import { defineComponent, ref, reactive, unref } from 'vue'
 import { ElMessage } from 'element-plus'
+import StatusComponent from '../components/StatusComponent.vue'
 
 export default defineComponent({
+  components: {
+    Status: StatusComponent,
+  },
   setup: (props, context) => {
     const list = ref([])
     const bmiForm = ref(null)
