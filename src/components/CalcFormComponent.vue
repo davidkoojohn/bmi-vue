@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import {reactive, ref, unref} from "vue";
+import {reactive, ref, unref, defineEmit} from "vue";
 import {ElMessage} from "element-plus";
 
 const bmiForm = ref(null)
@@ -42,12 +42,15 @@ const bmiFormRules = reactive({
     { type: 'number', message: '请输入合法的数值', trigger: 'blur' }
   ],
 })
+
+const emit = defineEmit(['handleSubmit'])
+
 const submitForm = async () => {
   const form = unref(bmiForm);
   if (!form) return
   try {
     await form.validate()
-    console.log('success', bmiFormData)
+    emit('handleSubmit', bmiFormData)
   } catch (error) {
     ElMessage.error('请正确填写表单！')
   }

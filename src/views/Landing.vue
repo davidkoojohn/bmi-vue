@@ -4,7 +4,7 @@
       <el-row class="container">
         <el-col :span="12" :xs="24">
           <div class="left">
-            <CalcForm />
+            <CalcForm @handleSubmit="handleSubmit"/>
           </div>
         </el-col>
         <el-col :span="12" :xs="24">
@@ -27,12 +27,17 @@ export default defineComponent({
     Status: StatusComponent,
     CalcForm: CalcFormComponent,
   },
-  setup: (props, context) => {
+  setup: (props, { emit }) => {
     const list = ref([])
     const status = ref('')
 
+    const handleSubmit = (data) => {
+      console.log(data)
+    }
+
     return {
-      status
+      status,
+      handleSubmit
     }
   }
 })
