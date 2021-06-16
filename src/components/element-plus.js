@@ -1,4 +1,5 @@
 import {
+  ElIcon,
   ElContainer,
   ElHeader,
   ElMain,
@@ -18,6 +19,7 @@ import {
 
 
 const components = [
+  ElIcon,
   ElContainer,
   ElHeader,
   ElMain,
