@@ -24,15 +24,18 @@
     <el-table-column
         label="身高"
         prop="height"
+        align="center"
     />
     <el-table-column
         label="体重"
         prop="weight"
+        align="center"
     />
     <el-table-column
         label="BMI"
         prop="bmi"
         width="100"
+        align="center"
     />
     <el-table-column label="操作" width="120" align="center">
       <template #default="scope">
@@ -49,7 +52,7 @@
 </template>
 
 <script setup>
-import {defineEmit, defineProps} from 'vue'
+import {defineEmit, defineProps, toRefs} from 'vue'
 import {ElMessage, ElMessageBox} from 'element-plus';
 import dayjs from 'dayjs'
 
@@ -61,7 +64,7 @@ const props = defineProps({
 })
 const emit = defineEmit(['handleDelete'])
 
-const { list: dataList } = props
+const { list: dataList } = toRefs(props)
 
 const formatDate = (date) => {
   return dayjs(date).format('YYYY-MM-DD HH:mm:ss')

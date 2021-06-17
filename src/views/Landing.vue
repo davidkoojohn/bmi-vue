@@ -50,6 +50,7 @@ export default defineComponent({
         if (res.code === '!ok') {
           throw '!ok'
         } else {
+          status.value = res.data.status
           await getBMIListData()
         }
       } catch (e) {
@@ -77,8 +78,7 @@ export default defineComponent({
 
     const getBMIListData = async () => {
       const loading = ElLoading.service({
-        fullscreen: true,
-        text: '计算中...'
+        fullscreen: true
       })
       try {
         const res = await getBMIList()
