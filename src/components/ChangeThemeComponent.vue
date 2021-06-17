@@ -7,13 +7,17 @@ import { onMounted } from 'vue'
 
 const setTheme = () => {
   if (localStorage.getItem('isDark') === 'true') {
-    document.documentElement.style.setProperty("--bgc", "#151617");
-    document.documentElement.style.setProperty("--div-bgc", "#1D1F20");
-    document.documentElement.style.setProperty("--main-color", "#fff");
+    document.documentElement.style.cssText = `
+      --bgc: #151617;
+      --div-bgc: #1D1F20;
+      --main-color: #fff;
+    `
   } else {
-    document.documentElement.style.setProperty("--bgc", "#f5f5f7");
-    document.documentElement.style.setProperty("--div-bgc", "#fff");
-    document.documentElement.style.setProperty("--main-color", "#2c3e50");
+    document.documentElement.style.cssText = `
+      --bgc: #f5f5f7;
+      --div-bgc: #fff;
+      --main-color: #2c3e50;
+    `
   }
 }
 
