@@ -1,9 +1,28 @@
 <template>
-  <button @click="toggleTheme">切换主题</button>
+  <el-tooltip class="item" effect="light" :content="tooltipText" placement="left">
+    <el-button
+        v-if="isDark !== 'true'"
+        @click="toggleTheme"
+        icon="el-icon-moon"
+        size="mini"
+        class="dark"
+        circle
+    />
+    <el-button
+        v-else
+        @click="toggleTheme"
+        icon="el-icon-sunny"
+        size="mini"
+        class="light"
+        circle
+    />
+  </el-tooltip>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref, computed } from 'vue'
+
+const isDark = ref(localStorage.getItem('isDark'))
 
 const setTheme = () => {
   if (localStorage.getItem('isDark') === 'true') {
@@ -23,11 +42,29 @@ const setTheme = () => {
 
 const toggleTheme = () => {
   localStorage.setItem('isDark', !(localStorage.getItem('isDark') === 'true'))
-  console.log(localStorage.getItem('isDark'))
+  isDark.value = localStorage.getItem('isDark')
   setTheme()
 }
+
+const tooltipText = computed(() => {
+  if (isDark.value !== 'true') {
+    return '夜晚模式'
+  } else {
+    return '日间模式'
+  }
+})
 
 onMounted(() => {
   setTheme()
 })
 </script>
+
+<style>
+.light {
+  background-color: #f5f5f7;
+}
+
+.dark {
+  background-color: #151617;
+}
+</style>

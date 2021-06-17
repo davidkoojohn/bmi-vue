@@ -11,6 +11,7 @@ import {
   ElFormItem,
   ElInput,
   ElButton,
+  ElTooltip,
   ElTable,
   ElTableColumn,
   ElInfiniteScroll,
@@ -32,6 +33,7 @@ const components = [
   ElFormItem,
   ElInput,
   ElButton,
+  ElTooltip,
   ElTable,
   ElTableColumn,
 ]
