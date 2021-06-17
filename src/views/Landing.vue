@@ -21,6 +21,8 @@
 import { defineComponent, ref } from 'vue'
 import StatusComponent from '../components/StatusComponent.vue'
 import CalcFormComponent from '../components/CalcFormComponent.vue'
+import { submitBMI } from '../api'
+import { ElMessage, ElLoading } from 'element-plus'
 
 export default defineComponent({
   components: {
@@ -31,8 +33,19 @@ export default defineComponent({
     const list = ref([])
     const status = ref('')
 
-    const handleSubmit = (data) => {
-      console.log(data)
+    const handleSubmit = async (data) => {
+      const loading = ElLoading.service({
+        fullscreen: true,
+        text: '计算中...'
+      })
+      try {
+        const res = await submitBMI(data)
+        if (res.code === '!ok') throw '!ok'
+      } catch (e) {
+        ElMessage.error('内部错误，请刷新重试！');
+      } finally {
+        loading.close()
+      }
     }
 
     return {
