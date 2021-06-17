@@ -15,7 +15,7 @@
       </el-row>
       <el-row class="container list">
         <el-col :span="24" :xs="24">
-          <DataList :list="list" />
+          <DataList :list="list" @handleDelete="handleDelete" />
         </el-col>
       </el-row>
     </template>
@@ -27,7 +27,7 @@ import { defineComponent, ref, onBeforeMount } from 'vue'
 import StatusComponent from '../components/StatusComponent.vue'
 import CalcFormComponent from '../components/CalcFormComponent.vue'
 import DataListComponent from '../components/DataListComponent.vue'
-import { submitBMI, getBMIList } from '../api'
+import { submitBMI, getBMIList, delBMI } from '../api'
 import { ElMessage, ElLoading } from 'element-plus'
 
 export default defineComponent({
@@ -47,7 +47,27 @@ export default defineComponent({
       })
       try {
         const res = await submitBMI(data)
-        if (res.code === '!ok') throw '!ok'
+        if (res.code === '!ok') {
+          throw '!ok'
+        } else {
+          await getBMIListData()
+        }
+      } catch (e) {
+        ElMessage.error('内部错误，请刷新重试！');
+      } finally {
+        loading.close()
+      }
+    }
+
+    const handleDelete = async (id) => {
+      const loading = ElLoading.service({
+        fullscreen: true,
+        text: '删除...'
+      })
+      try {
+        await delBMI(id)
+        ElMessage.success('删除成功');
+        await getBMIListData()
       } catch (e) {
         ElMessage.error('内部错误，请刷新重试！');
       } finally {
@@ -78,6 +98,7 @@ export default defineComponent({
       status,
       list,
       handleSubmit,
+      handleDelete,
     }
   }
 })

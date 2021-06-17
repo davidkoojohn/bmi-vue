@@ -49,8 +49,8 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-import { ElMessageBox } from 'element-plus';
+import {defineEmit, defineProps} from 'vue'
+import {ElMessage, ElMessageBox} from 'element-plus';
 import dayjs from 'dayjs'
 
 const props = defineProps({
@@ -59,6 +59,7 @@ const props = defineProps({
     default: () => []
   }
 })
+const emit = defineEmit(['handleDelete'])
 
 const { list: dataList } = props
 
@@ -72,9 +73,9 @@ const handleDelete = ({objectId}) => {
     cancelButtonText: '取消',
     type: 'warning'
   }).then(() => {
-    console.log(objectId);
+    emit('handleDelete', objectId)
   }).catch((e) => {
-    console.log(e)
+    ElMessage.info('取消删除！');
   })
 }
 </script>

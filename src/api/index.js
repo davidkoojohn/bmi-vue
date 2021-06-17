@@ -8,6 +8,14 @@ export function submitBMI(data) {
   })
 }
 
+export function delBMI(id) {
+  return http({
+    method: 'DELETE',
+    url: 'https://veihwwnelcwq.leanapp.cn/bmi',
+    data: {id}
+  })
+}
+
 export function getBMIList() {
   return http({
     url: 'https://veihwwnelcwq.leanapp.cn/bmi'
