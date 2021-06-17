@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="box-card div-bgc">
     <template #header>
       <div class="card-header">
         <span>BMI 中国标准</span>

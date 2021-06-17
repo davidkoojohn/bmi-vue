@@ -1,6 +1,7 @@
 <template>
   <h2>BMI 历史记录</h2>
   <el-table
+      class="table"
       :data="dataList"
       style="width: 100%"
       stripe
@@ -82,4 +83,20 @@ const handleDelete = ({objectId}) => {
   })
 }
 </script>
+
+<style>
+.table {
+  th,
+  tr {
+    background-color: var(--bgc);
+  }
+
+  .el-table__row {
+    background-color: var(--div-bgc);
+  }
+  .el-table__row--striped td {
+    background-color: var(--bgc) !important;
+  }
+}
+</style>
 

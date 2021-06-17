@@ -66,6 +66,10 @@ const submitForm = async () => {
     margin-left: 20px;
   }
 
+  .el-input__inner {
+    background-color: var(--div-bgc);
+  }
+
   .submit-bmi {
     margin-left: 50px;
   }
