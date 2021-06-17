@@ -4,6 +4,7 @@ specifiers:
   '@vitejs/plugin-vue': ^1.2.3
   '@vue/compiler-sfc': ^3.1.1
   autoprefixer: ^10.2.6
+  dayjs: ^1.10.5
   element-plus: ^1.0.2-beta.48
   normalize.css: ^8.0.1
   precss: ^4.0.0
@@ -13,6 +14,7 @@ specifiers:
   vue-router: '4'
 
 dependencies:
+  dayjs: registry.nlark.com/dayjs/1.10.5
   element-plus: registry.nlark.com/element-plus/1.0.2-beta.48_vue@3.1.1
   normalize.css: registry.nlark.com/normalize.css/8.0.1
   vue: registry.nlark.com/vue/3.1.1

@@ -7,3 +7,9 @@ export function submitBMI(data) {
     data
   })
 }
+
+export function getBMIList() {
+  return http({
+    url: 'https://veihwwnelcwq.leanapp.cn/bmi'
+  })
+}

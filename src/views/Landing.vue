@@ -13,21 +13,28 @@
           </div>
         </el-col>
       </el-row>
+      <el-row class="container list">
+        <el-col :span="24" :xs="24">
+          <DataList :list="list" />
+        </el-col>
+      </el-row>
     </template>
   </app-layout>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onBeforeMount } from 'vue'
 import StatusComponent from '../components/StatusComponent.vue'
 import CalcFormComponent from '../components/CalcFormComponent.vue'
-import { submitBMI } from '../api'
+import DataListComponent from '../components/DataListComponent.vue'
+import { submitBMI, getBMIList } from '../api'
 import { ElMessage, ElLoading } from 'element-plus'
 
 export default defineComponent({
   components: {
     Status: StatusComponent,
     CalcForm: CalcFormComponent,
+    DataList: DataListComponent,
   },
   setup: (props, { emit }) => {
     const list = ref([])
@@ -48,9 +55,29 @@ export default defineComponent({
       }
     }
 
+    const getBMIListData = async () => {
+      const loading = ElLoading.service({
+        fullscreen: true,
+        text: '计算中...'
+      })
+      try {
+        const res = await getBMIList()
+        list.value = res.data
+      } catch (e) {
+        ElMessage.error('网络错误，请刷新重试！');
+      } finally {
+        loading.close()
+      }
+    }
+
+    onBeforeMount(async () => {
+      await getBMIListData()
+    })
+
     return {
       status,
-      handleSubmit
+      list,
+      handleSubmit,
     }
   }
 })
@@ -67,6 +94,11 @@ $bg-color: #f00;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  &.list {
+    max-width: 1000px;
+    width: 100%;
   }
 }
 </style>

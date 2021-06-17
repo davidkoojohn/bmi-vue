@@ -11,8 +11,9 @@ import {
   ElFormItem,
   ElInput,
   ElButton,
+  ElTable,
+  ElTableColumn,
   ElInfiniteScroll,
-  ElLoading,
   ElMessageBox,
   ElNotification,
 } from 'element-plus'
@@ -31,11 +32,12 @@ const components = [
   ElFormItem,
   ElInput,
   ElButton,
+  ElTable,
+  ElTableColumn,
 ]
 
 const plugins = [
   ElInfiniteScroll,
-  ElLoading,
   ElMessageBox,
   ElNotification,
 ]
