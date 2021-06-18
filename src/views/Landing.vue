@@ -13,6 +13,9 @@
           </div>
         </el-col>
       </el-row>
+      <el-row class="container charts">
+        <TrendingCharts />
+      </el-row>
       <el-row class="container list">
         <el-col :span="24" :xs="24">
           <DataList :list="list" @handleDelete="handleDelete" />
@@ -27,6 +30,7 @@ import { defineComponent, ref, onBeforeMount } from 'vue'
 import StatusComponent from '../components/StatusComponent.vue'
 import CalcFormComponent from '../components/CalcFormComponent.vue'
 import DataListComponent from '../components/DataListComponent.vue'
+import TrendingChartsComponent from '../components/TrendingChartsComponent.vue'
 import { submitBMI, getBMIList, delBMI } from '../api'
 import { ElMessage, ElLoading } from 'element-plus'
 
@@ -35,6 +39,7 @@ export default defineComponent({
     Status: StatusComponent,
     CalcForm: CalcFormComponent,
     DataList: DataListComponent,
+    TrendingCharts: TrendingChartsComponent,
   },
   setup: (props, { emit }) => {
     const list = ref([])
@@ -118,6 +123,11 @@ $bg-color: #f00;
   }
 
   &.list {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  &.charts {
     max-width: 1000px;
     width: 100%;
   }

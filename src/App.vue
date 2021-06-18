@@ -9,6 +9,11 @@
   --main-color: #2c3e50;
 }
 
+::selection {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
