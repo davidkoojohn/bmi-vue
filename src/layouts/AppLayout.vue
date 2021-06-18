@@ -3,7 +3,7 @@
     <el-header>
      <div class="header">
        <div class="logo">
-         <div>BMI</div>
+         <router-link :to="{name: 'Landing'}">BMI</router-link>
          <div>身体质量指数 (Body Mass Index, 简称BMI), 亦称克托莱指数, 是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。</div>
        </div>
        <div class="end">
@@ -52,6 +52,7 @@ import ChangeTheme from '../components/ChangeThemeComponent.vue'
       :nth-child(1) {
         font-size: 40px;
         font-weight: bold;
+        color: var(--main-color);
       }
 
       :nth-child(2) {
@@ -98,6 +99,22 @@ import ChangeTheme from '../components/ChangeThemeComponent.vue'
 
     a {
       color: var(--main-color);
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  .el-header {
+    height: 140px !important;
+
+    .end {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        opacity: 0;
+      }
     }
   }
 }
