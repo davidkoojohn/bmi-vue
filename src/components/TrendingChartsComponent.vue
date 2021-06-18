@@ -1,5 +1,5 @@
 <template>
-  <h1>TrendingCharts</h1>
+  <h1>Trending</h1>
   <VChart class="chart" :init-option="{renderer: 'svg'}" :option="option" />
 </template>
 
@@ -28,7 +28,7 @@ use([
   GridComponent,
 ]);
 
-provide([THEME_KEY], "dark")
+provide([THEME_KEY], "light")
 
 const getBarColor = (e, p) => {
   if (p === "color") {
@@ -54,19 +54,7 @@ const getBarColor = (e, p) => {
   }
 }
 
-const colorList = [
-  'rgba(225,245,205,1)',
-  'rgba(225,245,205,1)',
-  'rgba(253,227,197,1)',
-  'rgba(243,212,213,1)',
-  'rgba(199,177,179,1)'
-];
-
 const option = ref({
-  title: {
-    text: "Traffic Sources",
-    left: "center"
-  },
   tooltip: {
     trigger: "item",
     formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -94,42 +82,19 @@ const option = ref({
   ],
   yAxis: [
     {
+      name: "BMI",
       type: 'value',
       min: 0,
       splitLine: {
-        show: true
+        show: true,
+        lineStyle: {
+          type: 'dashed',
+          width: 1
+        }
       }
     },
-    {
-      name: "横着的",
-      type: 'category',
-      data: ["偏瘦", "正常", "过重", "肥胖"],
-      show: false
-    }
   ],
   series: [
-    {
-      type: 'bar',
-      yAxisIndex: 1,
-      xAxisIndex: 1,
-      data: new Array(10).fill(3),
-      z: 10,
-      itemStyle: {
-        color: function(params) {
-          return getBarColor(params.dataIndex, 'color');
-        }
-      },
-      label: {
-        show: true,
-        formatter: function(params) {
-          return getBarColor(params.dataIndex, 'label');
-        },
-        position: 'inside',
-        distance: 10,
-        color: '#fff'
-      },
-      barWidth: '100%'
-    },
     {
       type: 'line',
       data: [
@@ -141,9 +106,6 @@ const option = ref({
       ],
       showSymbol: false,
       smooth: 0.3,
-      lineStyle: {
-        color: '#fff'
-      },
     },
     {
       type: 'bar',
