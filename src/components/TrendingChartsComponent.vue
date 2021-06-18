@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import { ref, provide } from "vue";
+import {ref, provide, defineProps, toRefs} from "vue";
 import { use } from "echarts/core";
 import { SVGRenderer } from "echarts/renderers";
 import { PieChart, BarChart, LineChart } from "echarts/charts";
@@ -30,34 +30,23 @@ use([
 
 provide([THEME_KEY], "light")
 
-const getBarColor = (e, p) => {
-  if (p === "color") {
-    if (e === 0) {
-      return '#ccc';
-    } else if (e === 1) {
-      return '#6c0';
-    } else if (e === 2) {
-      return '#ff0';
-    } else {
-      return '#f90';
-    }
-  } else {
-    if (e === 0) {
-      return '偏瘦';
-    } else if (e === 1) {
-      return '正常';
-    } else if (e === 2) {
-      return '过重';
-    } else {
-      return '肥胖';
-    }
+const props = defineProps({
+  chartData: {
+    type: Array,
+    default: () => []
+  },
+  dateData: {
+    type: Array,
+    default: () => []
   }
-}
+})
+
+const { chartData, dateData } = toRefs(props)
 
 const option = ref({
   tooltip: {
     trigger: "item",
-    formatter: "{a} <br/>{b} : {c} ({d}%)"
+    formatter: "{b} <br/> BMI: {c}"
   },
   legend: {
     orient: "vertical",
@@ -66,7 +55,7 @@ const option = ref({
   },
   xAxis: [
     {
-      data: ['16', '17', '18', '19', '20', '21', '22'],
+      data: dateData,
       type: 'category',
       name: "时间",
       nameLocation: 'end',
@@ -97,25 +86,13 @@ const option = ref({
   series: [
     {
       type: 'line',
-      data: [
-        { value: 23.4, name: "Direct" },
-        { value: 31.0, name: "Email" },
-        { value: 23.4, name: "Ad Networks" },
-        { value: 13.5, name: "Video Ads" },
-        { value: 15.48, name: "Search Engines" }
-      ],
+      data: chartData,
       showSymbol: false,
       smooth: 0.3,
     },
     {
       type: 'bar',
-      data: [
-        { value: 23.4, name: "Direct" },
-        { value: 31.0, name: "Email" },
-        { value: 23.4, name: "Ad Networks" },
-        { value: 13.5, name: "Video Ads" },
-        { value: 15.48, name: "Search Engines" }
-      ],
+      data: chartData,
       itemStyle: {
         color: 'rgb(141, 216, 248)'
       },

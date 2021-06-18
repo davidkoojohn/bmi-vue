@@ -14,7 +14,7 @@
         </el-col>
       </el-row>
       <el-row class="container charts">
-        <TrendingCharts />
+        <TrendingCharts v-if="list.length > 0" :chart-data="chartData" :date-data="dateData" />
       </el-row>
       <el-row class="container list">
         <el-col :span="24" :xs="24">
@@ -33,6 +33,7 @@ import DataListComponent from '../components/DataListComponent.vue'
 import TrendingChartsComponent from '../components/TrendingChartsComponent.vue'
 import { submitBMI, getBMIList, delBMI } from '../api'
 import { ElMessage, ElLoading } from 'element-plus'
+import dayjs from "dayjs";
 
 export default defineComponent({
   components: {
@@ -43,7 +44,12 @@ export default defineComponent({
   },
   setup: (props, { emit }) => {
     const list = ref([])
+    const chartData = ref([])
+    const dateData = ref([])
     const status = ref('')
+
+    const formatDatetime = (date) => dayjs(date).format('YYYY-MM-DD HH:mm:ss')
+    const formatDate = (date) => dayjs(date).format('YYYY-MM-DD')
 
     const handleSubmit = async (data) => {
       const loading = ElLoading.service({
@@ -88,6 +94,8 @@ export default defineComponent({
       try {
         const res = await getBMIList()
         list.value = res.data
+        chartData.value = res.data.map((item) => ({name: formatDatetime(item.createdAt), value: item.bmi}))
+        dateData.value = res.data.map((item) => formatDate(item.createdAt))
       } catch (e) {
         ElMessage.error('网络错误，请刷新重试！');
       } finally {
@@ -102,6 +110,8 @@ export default defineComponent({
     return {
       status,
       list,
+      chartData,
+      dateData,
       handleSubmit,
       handleDelete,
     }
