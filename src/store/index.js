@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore, createLogger } from 'vuex'
 
 import bmiModule from './modules/bmi'
 
@@ -24,6 +24,10 @@ const store = createStore({
   modules: {
     bmi: bmiModule,
   },
+  strict: import.meta.env.DEV,
+  plugins: [
+    createLogger()
+  ],
 })
 
 
