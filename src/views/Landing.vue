@@ -26,14 +26,13 @@
 </template>
 
 <script>
-import { defineComponent, ref, onBeforeMount } from 'vue'
+import { defineComponent, ref, onBeforeMount, toRefs, computed } from 'vue'
 import StatusComponent from '../components/StatusComponent.vue'
 import CalcFormComponent from '../components/CalcFormComponent.vue'
 import DataListComponent from '../components/DataListComponent.vue'
 import TrendingChartsComponent from '../components/TrendingChartsComponent.vue'
-import { submitBMI, getBMIList, delBMI } from '../api'
 import { ElMessage, ElLoading } from 'element-plus'
-import dayjs from "dayjs";
+import { useStore } from 'vuex'
 
 export default defineComponent({
   components: {
@@ -43,13 +42,11 @@ export default defineComponent({
     TrendingCharts: TrendingChartsComponent,
   },
   setup: (props, { emit }) => {
-    const list = ref([])
-    const chartData = ref([])
-    const dateData = ref([])
+    const store = useStore()
+    const { list } = toRefs(store.state.bmi)
+    const chartData = computed(() => store.getters['bmi/chartData'])
+    const dateData = computed(() => store.getters['bmi/dateData'])
     const status = ref('')
-
-    const formatDatetime = (date) => dayjs(date).format('YYYY-MM-DD HH:mm:ss')
-    const formatDate = (date) => dayjs(date).format('YYYY-MM-DD')
 
     const handleSubmit = async (data) => {
       const loading = ElLoading.service({
@@ -57,13 +54,7 @@ export default defineComponent({
         text: '计算中...'
       })
       try {
-        const res = await submitBMI(data)
-        if (res.code === '!ok') {
-          throw '!ok'
-        } else {
-          status.value = res.data.status
-          await getBMIListData()
-        }
+        await store.dispatch('bmi/calcItem', data)
       } catch (e) {
         ElMessage.error('内部错误，请刷新重试！');
       } finally {
@@ -77,9 +68,8 @@ export default defineComponent({
         text: '删除...'
       })
       try {
-        await delBMI(id)
+        await store.dispatch('bmi/delItem', id)
         ElMessage.success('删除成功');
-        await getBMIListData()
       } catch (e) {
         ElMessage.error('内部错误，请刷新重试！');
       } finally {
@@ -89,13 +79,11 @@ export default defineComponent({
 
     const getBMIListData = async () => {
       const loading = ElLoading.service({
-        fullscreen: true
+        fullscreen: true,
+        text: '数据加载中...'
       })
       try {
-        const res = await getBMIList()
-        list.value = res.data
-        chartData.value = res.data.map((item) => ({name: formatDatetime(item.createdAt), value: item.bmi}))
-        dateData.value = res.data.map((item) => formatDate(item.createdAt))
+        await store.dispatch('bmi/getList')
       } catch (e) {
         ElMessage.error('网络错误，请刷新重试！');
       } finally {

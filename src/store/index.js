@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
 
+import bmiModule from './modules/bmi'
+
 const store = createStore({
   state() {
     return {
@@ -20,8 +22,8 @@ const store = createStore({
     }
   },
   modules: {
-
-  }
+    bmi: bmiModule,
+  },
 })
 
 
