@@ -3,16 +3,16 @@
     <el-button
         v-if="isDark !== 'true'"
         @click="toggleTheme"
-        icon="el-icon-moon"
-        size="mini"
+        :icon="Moon"
+        size="small"
         class="dark"
         circle
     />
     <el-button
         v-else
         @click="toggleTheme"
-        icon="el-icon-sunny"
-        size="mini"
+        :icon="Sunny"
+        size="small"
         class="light"
         circle
     />
@@ -21,7 +21,7 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-
+import { Moon, Sunny } from "@element-plus/icons-vue"
 const isDark = ref(localStorage.getItem('isDark'))
 
 const setTheme = () => {

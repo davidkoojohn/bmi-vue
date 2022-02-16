@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import {reactive, ref, unref, defineEmit} from "vue";
+import {reactive, ref, unref} from "vue";
 import {ElMessage} from "element-plus";
 
 const bmiForm = ref(null)
@@ -43,7 +43,7 @@ const bmiFormRules = reactive({
   ],
 })
 
-const emit = defineEmit(['handleSubmit'])
+const emit = defineEmits(['handleSubmit'])
 
 const submitForm = async () => {
   const form = unref(bmiForm);

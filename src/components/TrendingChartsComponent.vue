@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import {ref, provide, defineProps, toRefs} from "vue";
+import {ref, provide, toRefs} from "vue";
 import { use } from "echarts/core";
 import { SVGRenderer } from "echarts/renderers";
 import { PieChart, BarChart, LineChart } from "echarts/charts";

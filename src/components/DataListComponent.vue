@@ -41,7 +41,7 @@
     <el-table-column label="操作" width="120" align="center">
       <template #default="scope">
         <el-button
-            size="mini"
+            size="small"
             type="danger"
             @click="handleDelete(scope.row)">删除</el-button>
       </template>
@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import {defineEmit, defineProps, toRefs} from 'vue'
+import {toRefs} from 'vue'
 import {ElMessage, ElMessageBox} from 'element-plus';
 import dayjs from 'dayjs'
 
@@ -63,7 +63,7 @@ const props = defineProps({
     default: () => []
   }
 })
-const emit = defineEmit(['handleDelete'])
+const emit = defineEmits(['handleDelete'])
 
 const { list: dataList } = toRefs(props)
 
